@@ -665,7 +665,7 @@ function getPileTopY(pct) {
   const hump       = Math.round(HUMP_H * humpScale);
   const headroom   = Math.max(0, baseY - BAG_TOP_Y);
   const naturalPeak = baseY - Math.min(hump, headroom);
-  return Math.max(naturalPeak, MIN_TIP_Y);
+  return Math.max(naturalPeak, BAG_TOP_Y);
 }
 
 function getBagPoints(fillPct) {
@@ -801,18 +801,18 @@ function tick(ts) {
     }
 
     case 2: {
-      tipY    = INIT_TIP_Y;
       valveOn = phaseT > 0.15;
 
       taludDrip    = phaseT > 0.15 && phaseT < 0.55;
       const taludT = clamp((phaseT - 0.15) / 0.15, 0, 1);
       fillPct      = taludT * TALUD_MAX_PCT;
+      tipY         = fillPct > 0.001 ? getPileTopY(fillPct) : INIT_TIP_Y;
 
       const tPart = clamp((phaseT - 0.30) / 0.46, 0, 1);
-      const maxH  = INIT_TIP_Y - T0_BOT_Y;
+      const maxH  = Math.max(0, tipY - T0_BOT_Y);
       const fillH = Math.round(maxH * tPart);
       setA(teleFillEl, {
-        y:       String(INIT_TIP_Y - fillH),
+        y:       String(tipY - fillH),
         height:  String(fillH),
         opacity: fillH > 0 ? '0.88' : '0'
       });
@@ -826,7 +826,7 @@ function tick(ts) {
       flowOn       = true;
       pipeFillFrac = 1;
       fillPct = TALUD_MAX_PCT + (VALVE_CLOSE_PCT - TALUD_MAX_PCT) * phaseT;
-      tipY    = Math.max(getPileTopY(fillPct), MIN_TIP_Y);
+      tipY    = getPileTopY(fillPct);
       setA(teleFillEl, { opacity: '0' });
       break;
     }
@@ -836,12 +836,10 @@ function tick(ts) {
       pipeFillFrac = clamp(1 - phaseT / 0.34, 0, 1);
       const tDrain    = clamp(1 - (phaseT - 0.34) / 0.46, 0, 1);
       drainActive     = pipeFillFrac > 0.02 || tDrain > 0.02;
-      const frozenTip = Math.max(getPileTopY(VALVE_CLOSE_PCT), MIN_TIP_Y);
-      const drainProg = 1 - tDrain;
-      tipY = Math.round(lerp(frozenTip, MIN_TIP_Y, easeInOut(drainProg)));
       const pipeDrained = PIPE_CONTRIB * (1 - pipeFillFrac);
       const teleDrained = TELE_CONTRIB * (1 - tDrain);
       fillPct = Math.min(VALVE_CLOSE_PCT + pipeDrained + teleDrained, MAX_FILL_PCT);
+      tipY = getPileTopY(fillPct);
       const maxTeleH = Math.max(0, tipY - T0_BOT_Y);
       const teleH    = Math.round(maxTeleH * tDrain);
       setA(teleFillEl, { y: String(tipY - teleH), height: String(teleH), opacity: teleH > 0 ? '0.88' : '0' });
@@ -850,7 +848,7 @@ function tick(ts) {
 
     case 5: {
       fillPct = MAX_FILL_PCT;
-      tipY    = MIN_TIP_Y;
+      tipY    = getPileTopY(fillPct);
       setA(teleFillEl, { y: String(tipY), height: '0', opacity: '0' });
       break;
     }
