@@ -673,7 +673,10 @@ function getBagPoints(fillPct) {
   const BBOT  = BAG_BOT_Y, BL = 96, BR = 204, CX = 150;
   const baseY = Math.round(BBOT - BAG_H * fillPct);
   const peakY = getPileTopY(fillPct);
-  return `${BL},${BBOT} ${BR},${BBOT} ${BR},${baseY} ${CX},${peakY} ${BL},${baseY}`;
+  const flatHalfW = Math.round(lerp(3, 9, clamp(fillPct / MAX_FILL_PCT, 0, 1)));
+  const flatL = CX - flatHalfW;
+  const flatR = CX + flatHalfW;
+  return `${BL},${BBOT} ${BR},${BBOT} ${BR},${baseY} ${flatR},${peakY} ${flatL},${peakY} ${BL},${baseY}`;
 }
 
 function applyFill(pct) {
