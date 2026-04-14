@@ -10,8 +10,9 @@
 body {
   background: #f3f4f6;
   color: #111827;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
+  font-family: "SF Compact Text", Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,20 +20,38 @@ body {
   gap: 12px;
 }
 
+.brand {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 5;
+}
+
+.brand img {
+  width: 173px;
+  height: auto;
+  display: block;
+}
+
 header { text-align: center; }
 
 header h1 {
   font-size: clamp(0.95rem, 2.6vw, 1.3rem);
-  font-weight: 700;
+  font-weight: 800;
+  font-style: italic;
   color: #1f2937;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 header p {
   font-size: clamp(0.68rem, 1.5vw, 0.8rem);
   color: #4b5563;
   margin-top: 4px;
+  font-style: normal;
+  font-weight: 600;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 .wrapper {
@@ -55,11 +74,12 @@ svg#plant {
   max-width: 340px;
   height: auto;
   overflow: visible;
-  font-family: Arial, sans-serif;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 svg#plant text {
-  font-family: Arial, sans-serif;
+  font-family: "SF Compact Text", Arial, sans-serif;
+  font-style: italic;
 }
 
 .sidebar {
@@ -84,14 +104,18 @@ svg#plant text {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 3px;
-  font-weight: 700;
+  font-weight: 800;
+  font-style: italic;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 .phase-name {
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 800;
+  font-style: italic;
   color: #111827;
   letter-spacing: 0.06em;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 .phase-desc {
@@ -100,6 +124,8 @@ svg#plant text {
   margin-top: 5px;
   line-height: 1.55;
   white-space: pre-line;
+  font-style: normal;
+  font-family: "SF Compact Text", Arial, sans-serif;
 }
 
 .weight-card {
@@ -116,7 +142,8 @@ svg#plant text {
   font-weight: 700;
   color: #1e3a8a;
   font-variant-numeric: tabular-nums;
-  font-family: Arial, sans-serif;
+  font-family: "SF Compact Text", Arial, sans-serif;
+  font-style: italic;
   line-height: 1;
 }
 .weight-unit { font-size: 0.68rem; color: #2563eb; opacity: 0.8; }
@@ -143,13 +170,13 @@ svg#plant text {
   animation: blink 0.45s infinite;
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-.metal-txt { font-size: 0.7rem; font-weight: 600; }
-.metal-sub { font-size: 0.56rem; color: #6b7280; margin-top: 1px; }
+.metal-txt { font-size: 0.7rem; font-weight: 600; font-family: "SF Compact Text", Arial, sans-serif; font-style: italic; }
+.metal-sub { font-size: 0.56rem; color: #6b7280; margin-top: 1px; font-family: "SF Compact Text", Arial, sans-serif; }
 
 .legend { display: flex; flex-direction: column; gap: 5px; }
 .legend-item { display: flex; align-items: flex-start; gap: 6px; }
 .ldot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; }
-.ltxt { font-size: 0.62rem; color: #374151; line-height: 1.35; }
+.ltxt { font-size: 0.62rem; color: #374151; line-height: 1.35; font-family: "SF Compact Text", Arial, sans-serif; }
 
 .controls { display: flex; gap: 6px; }
 button {
@@ -161,7 +188,9 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.68rem;
-  font-family: Arial, sans-serif;
+  font-family: "SF Compact Text", Arial, sans-serif;
+  font-style: italic;
+  font-weight: 700;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 button:hover { background: #f9fafb; }
@@ -194,6 +223,12 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
 </style>
 </head>
 <body>
+
+<div class="brand">
+  <div class="brand-logo">
+    <img src="fulcrum_logo_clean.png" alt="Fulcrum logo">
+  </div>
+</div>
 
 <header>
   <h1>BIG BAG FILLING SYSTEM</h1>
@@ -282,8 +317,8 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
       <rect x="208" y="293" width="9" height="231" fill="url(#stl)" rx="1"/>
       <rect x="75" y="285" width="150" height="11" fill="url(#stl)" rx="2"/>
       <rect x="-5" y="260" width="290" height="9" fill="url(#stl)" stroke="#6b7280" stroke-width="0.8" rx="1.5"/>
-      <text x="-56" y="248" font-size="9.8" fill="#374151" text-anchor="start" font-weight="700">MEZZANINE</text>
-      <text x="-56" y="260" font-size="9.8" fill="#374151" text-anchor="start" font-weight="700">PLATFORM</text>
+      <text x="-66" y="258" font-size="9.8" fill="#374151" text-anchor="start" font-weight="700">MEZZANINE</text>
+      <text x="-66" y="270" font-size="9.8" fill="#374151" text-anchor="start" font-weight="700">PLATFORM</text>
       <line x1="92" y1="306" x2="208" y2="410" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round"/>
       <line x1="92" y1="410" x2="208" y2="306" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round"/>
       <rect x="76" y="519" width="24" height="4" fill="url(#stl)" rx="1"/>
@@ -345,9 +380,10 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
       </line>
       <circle id="detLed" cx="170" cy="125" r="3.5" fill="#16a34a"/>
       <circle cx="170" cy="125" r="2" fill="#4ade80" opacity="0.6"/>
-      <rect x="177" y="120" width="58" height="18" fill="#eff6ff" stroke="#2563eb" stroke-width="0.8" rx="2"/>
-      <text x="180" y="129" font-size="4.8" fill="#2563eb" font-weight="700">METTLER</text>
-      <text x="180" y="135" font-size="4.8" fill="#2563eb" font-weight="700">TOLEDO</text>
+      <rect x="177" y="118" width="60" height="28" fill="#eff6ff" stroke="#2563eb" stroke-width="0.8" rx="2"/>
+      <text x="180" y="128" font-size="7.2" fill="#2563eb" font-weight="700">METTLER</text>
+      <text x="180" y="136" font-size="7.2" fill="#2563eb" font-weight="700">TOLEDO</text>
+      <text x="180" y="144" font-size="6.9" fill="#2563eb" font-weight="700">MD SYSTEM</text>
       <rect x="136" y="113" width="28" height="6" fill="url(#stl)" rx="1"/>
       <rect x="136" y="164" width="28" height="6" fill="url(#stl)" rx="1"/>
       <rect x="143" y="160" width="14" height="6" fill="#9ca3af"/>
@@ -377,23 +413,23 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
       <rect x="133" y="88" width="34" height="8" fill="url(#stl)" rx="1"/>
 
       <g opacity="0.95">
-        <line x1="157" y1="104" x2="324" y2="104" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
-        <line x1="159" y1="260" x2="324" y2="260" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
-        <line x1="324" y1="104" x2="324" y2="260" stroke="#374151" stroke-width="1.3"
+        <line x1="157" y1="104" x2="334" y2="104" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
+        <line x1="159" y1="260" x2="334" y2="260" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
+        <line x1="334" y1="104" x2="334" y2="260" stroke="#374151" stroke-width="1.3"
               marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
-        <line x1="318" y1="104" x2="330" y2="104" stroke="#374151" stroke-width="1"/>
-        <line x1="318" y1="260" x2="330" y2="260" stroke="#374151" stroke-width="1"/>
-        <text x="334" y="190" font-size="13" fill="#374151" font-weight="700">1.6 m</text>
+        <line x1="328" y1="104" x2="340" y2="104" stroke="#374151" stroke-width="1"/>
+        <line x1="328" y1="260" x2="340" y2="260" stroke="#374151" stroke-width="1"/>
+        <text x="338" y="190" font-size="13" fill="#374151" font-weight="700">1.6 m</text>
       </g>
 
       <g opacity="0.95">
-        <line x1="157" y1="104" x2="368" y2="104" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
-        <line x1="224" y1="527" x2="368" y2="527" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
-        <line x1="368" y1="104" x2="368" y2="527" stroke="#374151" stroke-width="1.4"
+        <line x1="157" y1="104" x2="385" y2="104" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
+        <line x1="224" y1="527" x2="385" y2="527" stroke="#6b7280" stroke-width="0.5" opacity="0.65"/>
+        <line x1="385" y1="104" x2="385" y2="527" stroke="#374151" stroke-width="1.4"
               marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
-        <line x1="362" y1="104" x2="374" y2="104" stroke="#374151" stroke-width="1"/>
-        <line x1="362" y1="527" x2="374" y2="527" stroke="#374151" stroke-width="1"/>
-        <text x="378" y="322" font-size="13" fill="#374151" font-weight="700">4.4 m</text>
+        <line x1="379" y1="104" x2="391" y2="104" stroke="#374151" stroke-width="1"/>
+        <line x1="379" y1="527" x2="391" y2="527" stroke="#374151" stroke-width="1"/>
+        <text x="389" y="322" font-size="13" fill="#374151" font-weight="700">4.4 m</text>
       </g>
 
       <text x="2" y="38" font-size="9.8" fill="#111827" font-weight="700">HOPPER</text>
@@ -401,17 +437,17 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
 
       <line x1="163" y1="100" x2="236" y2="90" stroke="#6b7280" stroke-width="0.8"/>
       <circle cx="236" cy="90" r="1.5" fill="#6b7280"/>
-      <text x="240" y="87" font-size="9.8" fill="#111827" font-weight="700">INLET VALVE</text>
+      <text x="244" y="93" font-size="9.8" fill="#111827" font-weight="700">INLET VALVE</text>
 
       <line x1="125" y1="144" x2="108" y2="144" stroke="#6b7280" stroke-width="0.8"/>
       <circle cx="108" cy="144" r="1.5" fill="#6b7280"/>
       <text x="2" y="144" font-size="9.8" fill="#111827" font-weight="700">MD - GF PROFILE</text>
-      <text x="2" y="158" font-size="8.4" fill="#6b7280">THROUGHPUT TUBE</text>
-      <text x="2" y="169" font-size="8.4" fill="#6b7280">FLOW RATE 10,000 KG/H</text>
+      <text x="-8" y="158" font-size="8.4" fill="#6b7280">THOUGHPUT TUBE R200 mm</text>
+      <text x="-8" y="169" font-size="8.4" fill="#6b7280">FLOW RATE 10,000 KG/H</text>
 
       <line x1="184" y1="210" x2="226" y2="224" stroke="#6b7280" stroke-width="0.8"/>
       <circle cx="226" cy="224" r="1.5" fill="#6b7280"/>
-      <text x="230" y="221" font-size="8.4" fill="#111827" font-weight="700">REJECTED PRODUCT</text>
+      <text x="234" y="227" font-size="8.4" fill="#111827" font-weight="700">REJECTED PRODUCT</text>
 
       <line x1="143" y1="204" x2="124" y2="204" stroke="#6b7280" stroke-width="0.8"/>
       <circle cx="124" cy="204" r="1.5" fill="#6b7280"/>
@@ -431,8 +467,9 @@ button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
       <text x="242" y="465" font-size="8.8" fill="#6b7280">90cm x 90cm x 1.9m</text>
       <text x="242" y="477" font-size="8.8" fill="#6b7280">Level-filled system</text>
 
-      <line x1="79" y1="282" x2="58" y2="294" stroke="#6b7280" stroke-width="0.8"/>
-      <text x="-32" y="296" font-size="9.8" fill="#111827" font-weight="700">LOAD CELL (x4)</text>
+      <line x1="79" y1="282" x2="48" y2="302" stroke="#6b7280" stroke-width="0.8"/>
+      <circle cx="48" cy="302" r="1.5" fill="#6b7280"/>
+      <text x="-16" y="306" font-size="9.8" fill="#111827" font-weight="700">LOAD CELL</text>
     </svg>
   </div>
 
